@@ -1,5 +1,7 @@
-package dev.monczall.springplayground.models;
+package dev.monczall.springplayground.catching.entities;
 
+import dev.monczall.springplayground.pokemon.entities.Pokemon;
+import dev.monczall.springplayground.trainer.entities.Trainer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +19,10 @@ public class PokemonCatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @Column(name = "trainer_id")
+    @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
     @ManyToOne
-    @Column(name = "pokemon_id")
+    @JoinColumn(name = "pokemon_id", nullable = false)
     private Pokemon pokemon;
     private double combatPower;
     private double height;

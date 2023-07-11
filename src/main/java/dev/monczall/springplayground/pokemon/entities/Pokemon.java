@@ -1,6 +1,8 @@
-package dev.monczall.springplayground.models;
+package dev.monczall.springplayground.pokemon.entities;
 
-import dev.monczall.springplayground.models.utils.enums.PokemonType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.monczall.springplayground.catching.entities.PokemonCatch;
+import dev.monczall.springplayground.pokemon.utils.PokemonType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,10 +26,13 @@ public class Pokemon {
     @NotBlank(message = "Pokemon's name must not be null")
     @Size(min = 3, max = 30, message = "Pokemon's name length must be in range from 3 to 30")
     private String name;
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "Pokemon's first type must not be null")
     private PokemonType typeOne;
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "Pokemon's second type must not be null")
     private PokemonType typeTwo;
-    @ManyToMany(mappedBy = "pokemon")
+    @JsonIgnore
+    @OneToMany(mappedBy = "pokemon")
     private List<PokemonCatch> catches;
 }

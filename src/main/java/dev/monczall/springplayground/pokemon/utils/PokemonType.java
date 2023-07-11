@@ -1,4 +1,4 @@
-package dev.monczall.springplayground.models.utils.enums;
+package dev.monczall.springplayground.pokemon.utils;
 
 public enum PokemonType {
     NONE,
