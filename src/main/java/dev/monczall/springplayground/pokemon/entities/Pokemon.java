@@ -5,6 +5,8 @@ import dev.monczall.springplayground.catching.entities.PokemonCatch;
 import dev.monczall.springplayground.pokemon.utils.PokemonType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,16 +23,16 @@ public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Pokemon's hex ID must not be null")
+    @NotBlank(message = "{pokemon.id.hex.not-blank}")
     private String hexId;
-    @NotBlank(message = "Pokemon's name must not be null")
-    @Size(min = 3, max = 30, message = "Pokemon's name length must be in range from 3 to 30")
+    @NotBlank(message = "{pokemon.name.not-blank}")
+    @Size(min = 3, max = 30, message = "{pokemon.name.length}")
     private String name;
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Pokemon's first type must not be null")
+    @NotNull(message = "{pokemon.type.first.not-empty}")
     private PokemonType typeOne;
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Pokemon's second type must not be null")
+    @NotNull(message = "{pokemon.type.second.not-empty}")
     private PokemonType typeTwo;
     @JsonIgnore
     @OneToMany(mappedBy = "pokemon")

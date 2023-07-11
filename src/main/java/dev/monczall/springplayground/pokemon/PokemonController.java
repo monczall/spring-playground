@@ -1,10 +1,11 @@
 package dev.monczall.springplayground.pokemon;
 
+import dev.monczall.springplayground.catching.entities.PokemonCatch;
 import dev.monczall.springplayground.pokemon.entities.Pokemon;
+import dev.monczall.springplayground.trainer.entities.Trainer;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +19,10 @@ public class PokemonController {
     @GetMapping("")
     public List<Pokemon> getAllPokemons() {
         return pokemonService.getAllPokemons();
+    }
+
+    @PostMapping("")
+    public String get(@Valid @RequestBody PokemonCatch pokemon) {
+        return "";
     }
 }

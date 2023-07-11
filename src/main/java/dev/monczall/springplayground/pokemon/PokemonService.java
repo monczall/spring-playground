@@ -14,7 +14,8 @@ class PokemonService {
     private final PokemonRepository pokemonRepository;
 
     List<Pokemon> getAllPokemons() {
-        System.out.println(pokemonRepository.findAll());
         return pokemonRepository.findAll();
     }
+
+
 }
